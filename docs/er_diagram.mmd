@@ -1,0 +1,54 @@
+erDiagram
+    CUSTOMERS ||--o{ ORDERS : places
+    ORDERS ||--|{ ORDER_ITEMS : contains
+    PRODUCTS ||--o{ ORDER_ITEMS : appears_in
+    SELLERS ||--o{ ORDER_ITEMS : fulfills
+    ORDERS ||--o{ PAYMENTS : has
+    ORDERS ||--o{ REVIEWS : receives
+
+    CUSTOMERS {
+        string customer_id PK
+        string customer_unique_id
+        string customer_city
+        string customer_state
+    }
+
+    ORDERS {
+        string order_id PK
+        string customer_id FK
+        string order_status
+        datetime order_purchase_timestamp
+    }
+
+    ORDER_ITEMS {
+        string order_id PK, FK
+        int order_item_id PK
+        string product_id FK
+        string seller_id FK
+        float price
+        float freight_value
+    }
+
+    PRODUCTS {
+        string product_id PK
+        string product_category_name
+    }
+
+    SELLERS {
+        string seller_id PK
+        string seller_city
+        string seller_state
+    }
+
+    PAYMENTS {
+        string order_id PK, FK
+        int payment_sequential PK
+        string payment_type
+        float payment_value
+    }
+
+    REVIEWS {
+        string review_id PK
+        string order_id FK
+        int review_score
+    }
