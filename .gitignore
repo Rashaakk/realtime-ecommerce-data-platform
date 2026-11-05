@@ -244,3 +244,5 @@ data/processed/*
 # Logs and temporary files
 *.log
 .DS_Store
+logs/
+data/quality/
